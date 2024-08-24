@@ -1,0 +1,62 @@
+// Online Java Compiler
+// Use this editor to write, compile and run your Java code online
+
+class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Try programiz.pro");
+        Queue que=new Queue(4);
+        que.enqueue(1);
+        que.enqueue(2);
+        que.enqueue(3);
+        que.enqueue(4);
+        que.deque();
+        que.enqueue(5);
+        que.deque();
+        System.out.println(que.enqueue(6));
+        que.display();
+        
+        
+    }
+}
+class Queue
+{
+    int size;
+    int capacity;
+    int front;
+    int rear;
+    int []arr;
+    public Queue(int cap)
+    {
+        capacity=cap;
+        arr=new int[capacity];
+        
+    }
+    public int enqueue(int num)
+    {
+        if(size==capacity)
+        return -1;
+        arr[rear]=num;
+        rear=(rear+1)%capacity;
+        size++;
+        return num;
+    }
+    public int deque()
+    {
+        if(size==0)
+        return -1;
+        int num=arr[front];
+        front=(front+1)%capacity;
+        size--;
+        return num;
+    }
+    public void display()
+    {
+        for(int i=0;i<capacity;i++)
+        {
+            System.out.println(arr[i]);
+        }
+    }
+    public int getSize(){
+        return size;
+    }
+}
